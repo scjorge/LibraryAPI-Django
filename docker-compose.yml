@@ -1,0 +1,14 @@
+version: "3.9"
+   
+services:
+  web:
+    build: ./web
+    environment:
+      - POSTGRES_NAME=${POSTGRES_NAME:-postgres}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+    command: uwsgi --socket :8000 --master --enable-threads --protocol=http  --module web.wsgi
+    ports:
+      - 8000:8000 
+    volumes:
+      - ./web:/web
