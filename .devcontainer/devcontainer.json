@@ -29,7 +29,8 @@
 				"ms-python.vscode-pylance",
 				"Gruntfuggly.todo-tree",
 				"redhat.vscode-yaml",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"shd101wyy.markdown-preview-enhanced"
 			]
 		}
 	}
