@@ -15,16 +15,18 @@ WORKDIR /web
 COPY . .
 
 # Install python dependencies
-RUN apt update && apt-get install gcc -y
+RUN apt update && apt-get install gcc vim git -y
+RUN pip install --upgrade pip  
 RUN pip install -r requirements.txt
 
 # Set directories project
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
 
-RUN adduser web
-RUN chown -R web:web /vol
+RUN adduser django
+RUN chown -R django:django /vol
+RUN chown -R django:django /web
 RUN chmod -R 755 /vol/web
 RUN chmod -R 755 /web
 
-USER web
+USER django

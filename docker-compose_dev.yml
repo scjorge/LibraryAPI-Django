@@ -1,0 +1,15 @@
+version: "3.9"
+   
+services:
+  web:
+    build: ./web
+    image: library_api_dev:1.0
+    container_name: library_api_backend_dev
+    env_file: .env_develop
+    command: python manage.py runserver 0.0.0.0:8000
+    restart: always
+    ports:
+      - 8000:8000 
+    volumes:
+      - ./web:/web
+      
