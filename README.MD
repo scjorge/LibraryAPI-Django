@@ -26,7 +26,7 @@ You can use 'docker-compose_dev.yml' file to develop mode. This compose will use
 
 ### VSCode settings
 
-Use devcontainer to develop, the extensions I used are in devcontainer.json
+Use devcontainer to develop, some useful extensions I used are in devcontainer.json
 
 
 ## Launch in production mode

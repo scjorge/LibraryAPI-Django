@@ -15,7 +15,15 @@ WORKDIR /web
 COPY . .
 
 # Install python dependencies
-RUN apt update && apt-get install gcc vim git -y
+RUN apt update && apt-get install -y \
+    gcc \
+    build-essential \
+    libssl-dev \
+    libpq-dev \
+    libffi-dev \
+    python3-dev \
+    vim \
+    git
 RUN pip install --upgrade pip  
 RUN pip install -r requirements.txt
 
