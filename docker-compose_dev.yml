@@ -26,8 +26,8 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - postgres_dev:/var/lib/postgresql/data
     restart: always
 
 volumes:
-  postgres:
+  postgres_dev:
