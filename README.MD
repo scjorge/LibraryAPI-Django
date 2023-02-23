@@ -16,8 +16,8 @@ DB_PORT=<your db port>
 DB_HOST=<your db host>
 
 # API Project
-DJANGO_DEBUG_MODE=0 # use 0 for production 
-DJANGO_SECRET_KEY='django-insecure-hn70y(uzoc_5_g2pnh@+e711i0!d+p&s+4n_3vsb^_@6y#e%sm' # you can change this value
+DJANGO_DEBUG_MODE=0 # use 0 for production, 1 for develop
+DJANGO_SECRET_KEY=<your django token>
 ```
 
 ## Launch and debug (development mode)
