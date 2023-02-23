@@ -4,9 +4,26 @@ services:
   web:
     build: ./web
     image: library_api:2.1
-    container_name: library_api_backend
+    container_name: api
     env_file: .env
     command: uwsgi --socket :8000 --master --enable-threads --protocol=http  --module web.wsgi
     restart: always
     ports:
-      - 8000:8000 
+      - 8000:8000
+  
+  db:
+    image: postgres
+    container_name: postgres
+    env_file: .env
+    environment:
+      - POSTGRES_DB=${DB_NAME:-postgres}
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres:

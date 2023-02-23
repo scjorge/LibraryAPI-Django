@@ -4,12 +4,30 @@ services:
   web:
     build: ./web
     image: library_api_dev:1.0
-    container_name: library_api_backend_dev
+    container_name: api_dev
     env_file: .env_develop
     command: python manage.py runserver 0.0.0.0:8000
     restart: always
     ports:
-      - 8000:8000 
+      - 8000:8000
+    depends_on:
+      - db
     volumes:
       - ./web:/web
       
+  db:
+    image: postgres
+    container_name: postgres_dev
+    env_file: .env_develop
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres:

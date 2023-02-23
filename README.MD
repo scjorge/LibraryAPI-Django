@@ -24,6 +24,9 @@ DJANGO_SECRET_KEY='django-insecure-hn70y(uzoc_5_g2pnh@+e711i0!d+p&s+4n_3vsb^_@6y
 
 You can use 'docker-compose_dev.yml' file to develop mode. This compose will use the '.env_develop' file, so you can change it as well you need it.
 
+start with: <br>
+docker-compose --env-file=.env_develop -f docker-compose_dev.yml
+
 ### VSCode settings
 
 Use devcontainer to develop, some useful extensions I used are in devcontainer.json
