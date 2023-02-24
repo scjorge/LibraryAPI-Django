@@ -6,20 +6,18 @@ services:
     image: library_api:1.0
     container_name: api
     env_file: .env
-    #command: uwsgi --socket :8000 --master --enable-threads --protocol=http  --module web.wsgi
-    command: gunicorn web.wsgi:application --bind 0.0.0.0:8000
+    command: sh -c "python manage.py migrate && gunicorn web.wsgi:application --bind 0.0.0.0:8000"
+    #command: sh -c "python manage.py migrate && uwsgi --socket :8000 --master --enable-threads --protocol=http  --module web.wsgi"
     restart: always
+    depends_on:
+      - db
     ports:
       - 8000:8000
   
   db:
-    image: postgres
+    image: postgres:15
     container_name: postgres
     env_file: .env
-    environment:
-      - POSTGRES_DB=${DB_NAME:-postgres}
-      - POSTGRES_USER=${DB_USER:-postgres}
-      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
     ports:
       - 5432:5432
     volumes:

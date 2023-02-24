@@ -25,7 +25,7 @@ DJANGO_SECRET_KEY=<your django token>
 You can use 'docker-compose_dev.yml' file to develop mode. This compose will use the '.env_develop' file, so you can change it as well you need it.
 
 start with: <br>
-docker-compose --env-file=.env_develop -f docker-compose_dev.yml
+docker-compose -f docker-compose_dev.yml -p dev up
 
 ### VSCode settings
 
@@ -34,3 +34,6 @@ Use devcontainer to develop, some useful extensions I used are in devcontainer.j
 
 ## Launch in production mode
 Use 'docker-compose.yml' file to production mode. This compose will use the '.env' file, so you can change it as well you need it.
+
+start with: <br>
+docker-compose -f docker-compose.yml -p prod up
