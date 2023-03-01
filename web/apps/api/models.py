@@ -36,3 +36,20 @@ class Author(models.Model):
     
     def __str__(self):
         return str(self.name)
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    ISBN = models.CharField(max_length=32)
+    amount = models.PositiveIntegerField()
+    price = models.FloatField()
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='books')
+    publisher = models.ForeignKey(Publisher, on_delete=models.PROTECT, related_name='publisher')
+
+    class Meta:
+        db_table = "tb_book"
+        verbose_name = "Book"
+        verbose_name_plural = "Books"
+    
+    def __str__(self):
+        return str(self.title)
