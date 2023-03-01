@@ -1,5 +1,5 @@
 from django.db import models
-
+from apps.user.models import UserProfile
 
 class  Category(models.Model):
     description = models.CharField(max_length=255)
@@ -54,3 +54,36 @@ class Book(models.Model):
     
     def __str__(self):
         return str(self.title)
+
+    
+class Purchase(models.Model):
+    class StatusPurchase(models.IntegerChoices):
+        CART = 1, 'On Cart'
+        MADE = 2, 'Purchese Made'
+        PAID = 3, 'Paid'
+        DELIVERED = 4, 'Delivered'
+
+    user = models.ForeignKey(UserProfile, on_delete=models.PROTECT, related_name='purchase')
+    status = models.IntegerField(choices=StatusPurchase.choices, default=StatusPurchase.CART)
+
+    class Meta:
+        db_table = "tb_purchase"
+        verbose_name = "Purchase"
+        verbose_name_plural = "Purchases"
+    
+    def __str__(self):
+        return str(self.user)
+
+    
+class ItemPurchase(models.Model):
+    purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE, related_name='itens')
+    book = models.ForeignKey(Book, on_delete=models.PROTECT, related_name='itens')
+    amout = models.IntegerField()
+
+    class Meta:
+        db_table = "tb_item_purchase"
+        verbose_name = "Item_Purchase"
+        verbose_name_plural = "Itens_Purchases"
+    
+    def __str__(self):
+        return f"{self.purchase} ({self.book})"
