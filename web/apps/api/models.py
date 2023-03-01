@@ -44,7 +44,8 @@ class Book(models.Model):
     amount = models.PositiveIntegerField()
     price = models.FloatField()
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='books')
-    publisher = models.ForeignKey(Publisher, on_delete=models.PROTECT, related_name='publisher')
+    publisher = models.ForeignKey(Publisher, on_delete=models.PROTECT, related_name='books')
+    author = models.ManyToManyField(Author, related_name='books')
 
     class Meta:
         db_table = "tb_book"
