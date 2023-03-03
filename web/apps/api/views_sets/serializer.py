@@ -28,6 +28,14 @@ class BookSerializer(ModelSerializer):
 
 
 class BookSerializerView(ModelSerializer):
+
+    class Authorview(ModelSerializer):
+        class Meta:
+            model = Author
+            fields = ["name"]
+
+    author = Authorview(many=True)
+            
     class Meta:
         model = Book
         fields = "__all__"
