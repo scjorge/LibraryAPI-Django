@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
-from apps.api.models import Category, Publisher
-from .serializer import CategorySerializer, PublisherSerializer
+from apps.api.models import Category, Publisher, Author
+from .serializer import CategorySerializer, PublisherSerializer, AuthorSerializer
 
 
 class CategoryViewSet(ModelViewSet):
@@ -12,3 +12,8 @@ class CategoryViewSet(ModelViewSet):
 class PublisherViewSet(ModelViewSet):
     queryset = Publisher.objects.all()
     serializer_class = PublisherSerializer
+
+
+class AuthorViewSet(ModelViewSet):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
