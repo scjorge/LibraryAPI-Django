@@ -8,6 +8,7 @@ admin.site.register(Book)
 admin.site.register(Category)
 admin.site.register(Publisher)
 
+
 class ItensInLine(admin.TabularInline):
     model = ItemPurchase
 
