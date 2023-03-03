@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from apps.api.models import Category, Publisher, Author
+from apps.api.models import Category, Publisher, Author, Book
 
 
 class CategorySerializer(ModelSerializer):
@@ -19,3 +19,16 @@ class AuthorSerializer(ModelSerializer):
     class Meta:
         model = Author
         fields = "__all__"
+
+
+class BookSerializer(ModelSerializer):
+    class Meta:
+        model = Book
+        fields = "__all__"
+
+
+class BookSerializerView(ModelSerializer):
+    class Meta:
+        model = Book
+        fields = "__all__"
+        depth = 1
