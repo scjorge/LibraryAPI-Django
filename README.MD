@@ -4,6 +4,7 @@ This repository contains the web api code for the **Library** simulation.
 
 This project contains an example of Django Rest Framework project built.
 
+
 ## Install and configure the project
 
 You have to create a .env variables with this values inside:
@@ -19,6 +20,10 @@ DB_HOST=<your db host>
 DJANGO_DEBUG_MODE=0 # use 0 for production, 1 for develop
 DJANGO_SECRET_KEY=<your django token>
 ```
+
+## API documentation
+
+Use /swagger/ or /redoc/ for access the API documentation endpoint
 
 ## Launch and debug (development mode)
 
