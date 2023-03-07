@@ -30,7 +30,8 @@
 				"Gruntfuggly.todo-tree",
 				"redhat.vscode-yaml",
 				"eamodio.gitlens",
-				"shd101wyy.markdown-preview-enhanced"
+				"shd101wyy.markdown-preview-enhanced",
+				"bierner.markdown-preview-github-styles"
 			]
 		}
 	}
