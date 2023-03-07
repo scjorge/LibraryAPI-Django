@@ -4,6 +4,12 @@ This repository contains the web api code for the **Library** simulation.
 
 This project contains an example of Django Rest Framework project built.
 
+Used technologies:
+
+- Django 4.0.4
+- Django Rest Framework 3.14.0
+- Postgres 15.2
+
 
 ## Install and configure the project
 
@@ -24,6 +30,17 @@ DJANGO_SECRET_KEY=<your django token>
 ## API documentation
 
 Use /swagger/ or /redoc/ for access the API documentation endpoint
+
+## Usage 
+
+The base endpoint is /api/v1/viewset/
+defaul port is 8000 
+
+there is insomnia.json to test all avalible endpoints
+
+Exemple: 
+
+http://127.0.0.1:8000/api/v1/viewset/category/
 
 ## Launch and debug (development mode)
 
