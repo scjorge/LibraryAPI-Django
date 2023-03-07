@@ -1,12 +1,13 @@
 from rest_framework.viewsets import ModelViewSet
 
-from apps.api.models import Category, Publisher, Author, Book
+from apps.api.models import Category, Publisher, Author, Book, Purchase
 from .serializer import (
     CategorySerializer,
     PublisherSerializer,
     AuthorSerializer,
     BookSerializer,
     BookSerializerView,
+    PurchaseSerializer
 )
 
 
@@ -32,3 +33,8 @@ class BoookViewSet(ModelViewSet):
         if self.action in ["list", "retrieve"]:
             return BookSerializerView
         return BookSerializer
+
+
+class PurchaseViewSet(ModelViewSet):
+    queryset = Purchase.objects.all()
+    serializer_class = PurchaseSerializer
