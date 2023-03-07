@@ -41,6 +41,16 @@ class BookSerializerView(ModelSerializer):
         depth = 1
 
 
+class CreateEditItemPurchaseSerializer(ModelSerializer):
+    
+    class Meta:
+        model = ItemPurchase
+        fields = [
+            "book",
+            "amount",
+        ]
+
+
 class ItemPurchaseSerializer(ModelSerializer):
     total = SerializerMethodField()
 
@@ -68,3 +78,28 @@ class PurchaseSerializer(ModelSerializer):
 
     def get_status(self, instance):
         return instance.get_status_display()
+    
+
+class CreatEditPurchaseSerializer(ModelSerializer):
+    itens = CreateEditItemPurchaseSerializer(many=True)
+
+    class Meta:
+        model = Purchase
+        fields = ["user", "itens"]
+
+    def create(self, validate_data):
+        itens = validate_data.pop('itens')
+        purchase = Purchase.objects.create(**validate_data)
+        for item in itens:
+            ItemPurchase.objects.create(purchase=purchase, **item)
+        purchase.save()
+        return purchase
+
+    def update(self, instance, validate_data):
+        itens = validate_data.pop('itens')
+        if itens:
+            instance.itens.all().delete()
+            for item in itens:
+                ItemPurchase.objects.create(purchase=instance, **item)
+            instance.save()
+        return instance

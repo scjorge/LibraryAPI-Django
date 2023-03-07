@@ -7,7 +7,8 @@ from .serializer import (
     AuthorSerializer,
     BookSerializer,
     BookSerializerView,
-    PurchaseSerializer
+    PurchaseSerializer,
+    CreatEditPurchaseSerializer
 )
 
 
@@ -37,4 +38,8 @@ class BoookViewSet(ModelViewSet):
 
 class PurchaseViewSet(ModelViewSet):
     queryset = Purchase.objects.all()
-    serializer_class = PurchaseSerializer
+
+    def get_serializer_class(self):
+        if self.action in ["list", "retrieve"]:
+            return PurchaseSerializer
+        return CreatEditPurchaseSerializer
